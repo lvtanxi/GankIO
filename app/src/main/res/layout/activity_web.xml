@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              style="@style/MatchMatch.Vertical">
+
+    <include layout="@layout/toolbar"/>
+
+    <ProgressBar
+        android:id="@+id/progressbar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="2dip"
+        android:layout_gravity="center"
+        android:indeterminateOnly="false"
+        android:max="100"
+        android:progressDrawable="@drawable/progress_bar_states"
+        />
+
+
+    <WebView
+        android:id="@+id/wv_content"
+        style="@style/MatchMatch"/>
+
+
+</LinearLayout>

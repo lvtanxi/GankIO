@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MatchMatch.Vertical">
+
+    <include layout="@layout/toolbar"/>
+    <com.aurelhubert.ahbottomnavigation.AHBottomNavigationViewPager
+        android:id="@id/common_view_pager"
+        style="@style/MatchAuto"/>
+
+    <com.aurelhubert.ahbottomnavigation.AHBottomNavigation
+        android:id="@+id/bottom_navigation"
+        android:background="@color/colorPrimary"
+        style="@style/MatchWrap"/>
+</LinearLayout>

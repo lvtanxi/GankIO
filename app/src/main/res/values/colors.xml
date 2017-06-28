@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="TOAST_COLOR">#88000000</color>
+    <color name="COLOR_BORDER_LINE">#d7d7d7</color>
+    <color name="WINDOW_BACKGROUND">#F8F8F8</color>
+    <color name="not_select">#f6f8fa</color>
+    <color name="alertdialog_line">#c6c6c6</color>
+    <color name="actionsheet_blue">#037BFF</color>
+    <color name="actionsheet_red">#FD4A2E</color>
+    <color name="actionsheet_gray">#8F8F8F</color>
+    <color name="black">#222222</color>
+    <color name="trans">#00000000</color>
+    <color name="dividerColor">#AAAAAA</color>
+    <color name="colorPrimary">#1e2126</color>
+    <color name="colorAccent">#f80046</color>
+    <color name="not_enabled">#e0e1e3</color>
+    <color name="blue">#03a9f4</color>
+    <color name="gray">#666666</color>
+    <color name="red">#ff0000</color>
+    <color name="divider_line">#d7d7d7</color>
+
+    <color name="item_date">#ffA8A8A8</color>
+    <color name="tag_android">#94859c</color>
+    <color name="tag_ios">#5b6356</color>
+    <color name="tag_js">#ca8269</color>
+    <color name="tag_rec">#9d3d3f</color>
+    <color name="tag_res">#e4dc8b</color>
+    <color name="tag_bonus">#e5acbf</color>
+    <color name="tag_app">#772f09</color>
+    <color name="tag_video">#a6c7b2</color>
+    <color name="common_github_tag_bg">#ff000000</color>
+</resources>

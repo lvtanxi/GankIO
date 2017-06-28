@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@id/toolbar"
+        style="@style/MatchWrap"
+        android:background="@color/colorPrimary"
+        android:fitsSystemWindows="true"
+        app:titleTextColor="@android:color/white">
+        <LinearLayout
+            style="@style/MatchMatch.Horizontal">
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/sp_category"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:dropDownVerticalOffset="20dp"/>
+            <EditText
+                android:id="@+id/et_search"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_weight="6"
+                android:hint="请输入你想搜索的内容"
+                android:imeOptions="actionSearch"
+                android:background="@drawable/search_edittext_bg"
+                android:padding="2dp"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_search"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:clickable="false"
+                android:gravity="center"
+                android:text="搜索"
+                android:background="?selectableItemBackgroundBorderless"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+    <FrameLayout
+        android:id="@+id/search_content"
+        style="@style/MatchMatch"/>
+</LinearLayout>

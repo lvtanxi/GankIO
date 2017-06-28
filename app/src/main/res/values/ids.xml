@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<resources>
+
+    <item name="decode" type="id"/>
+    <item name="decode_failed" type="id"/>
+    <item name="decode_succeeded" type="id"/>
+    <item name="quit" type="id"/>
+    <item name="restart_preview" type="id"/>
+    <item name="return_scan_result" type="id"/>
+    <item name="toolbar" type="id"/>
+
+    <item name="refresh_Layout" type="id"/>
+    <item name="recycler_view" type="id"/>
+
+    <item name="common_tab_layout" type="id"/>
+    <item name="common_view_pager" type="id"/>
+
+    <item name="common_zbarview" type="id"/>
+
+    <item name="cgen_title" type="id"/>
+    <item name="back_image" type="id"/>
+
+</resources>

@@ -1,0 +1,5 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">干货</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="version_update">#版本<xliff:g id="VERSION">%1$s</xliff:g>#可更新</string>
+</resources>
