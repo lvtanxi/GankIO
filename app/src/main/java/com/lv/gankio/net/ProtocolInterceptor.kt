@@ -21,18 +21,15 @@ class ProtocolInterceptor : Interceptor {
     }
 
     private fun parseDataFromBody(body: String?): String {
-        var message: String
         try {
             val json = JSONObject(body)
             val error = json.optBoolean("error", false)
-            message = json.optString("msg")
             if (!error)
                 return json.optString("results")
-            throw HttpException(-1, message)
+            throw HttpException(-1, json.optString("msg"))
         } catch (e: Exception) {
-            message = "数据解析错误,请稍后重试!"
+            throw  HttpException(-2, if (e is HttpException) e.message else "数据解析错误,请稍后重试!")
         }
-        throw  RuntimeException(message)
     }
 
 }

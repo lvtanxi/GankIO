@@ -49,17 +49,27 @@ abstract class BaseRecyclerFragment<T> : BaseFragment(), RefreshListenerHelper.R
     override fun onProcessLogic(){
         refresh_Layout.startRefresh()
     }
-    fun stopLoading() = refreshListenerHelper?.stopLoading()
+    fun stopLoading(){
+        refreshListenerHelper?.stopLoading()
+        notifyDataSetChangedWrapper()
+    }
 
     fun stopRefreshOrMore(isSuceess: Boolean) {
         refreshListenerHelper?.stopLoading()
         if (baseAdapter != null && refreshListenerHelper != null) {
             val loadOver = refreshListenerHelper!!.handlePage(baseAdapter!!.changeDataSize, isSuceess)
+            notifyDataSetChangedWrapper()
             refresh_Layout.setEnableLoadmore(!loadOver)
         }
     }
 
-    protected fun toastMessage(message: String?) = baseActivity.toastMessage(message)
+    private fun notifyDataSetChangedWrapper(){
+        if (baseAdapter != null ) {
+            if (baseAdapter!!.dataIsEmpty())
+                baseAdapter?.notifyDataSetChangedWrapper()
+        }
+    }
+
 
     fun addItems(items: List<T>?, isRefresh: Boolean = true) = baseAdapter?.addItems(items, isRefresh)
 

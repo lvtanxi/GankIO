@@ -3,7 +3,9 @@ package com.lv.gankio.base
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
+import android.transition.Explode
 import android.view.MenuItem
+import android.view.Window
 import com.lv.gankio.R
 import com.lv.gankio.activity.GankActivity
 import com.lv.gankio.net.WidgetInterface
@@ -20,6 +22,11 @@ abstract class BaseActivity : AppCompatActivity(), WidgetInterface {
     protected var compositeSubscription: CompositeSubscription? = CompositeSubscription()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (android.os.Build.VERSION.SDK_INT > android.os.Build.VERSION_CODES.LOLLIPOP) {
+            window.requestFeature(Window.FEATURE_CONTENT_TRANSITIONS)
+            window.exitTransition = Explode()
+            window.exitTransition = Explode()
+        }
         setContentView(loadLayoutId())
         initToolbar()
         initData()

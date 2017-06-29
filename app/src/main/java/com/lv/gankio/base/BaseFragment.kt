@@ -29,15 +29,13 @@ abstract class BaseFragment : Fragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        this.contentView = inflater.inflate(loadLayoutId(), null)
+        this.contentView = inflater.inflate(loadLayoutId(), container,false)
+        hasCreateView = true
         return contentView
     }
 
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
         super.setUserVisibleHint(isVisibleToUser)
-        if (contentView == null)
-            return
-        hasCreateView = true
         if (isVisibleToUser) {
             onFragmentVisibleChange(true)
             isFragmentVisible = true
@@ -50,7 +48,7 @@ abstract class BaseFragment : Fragment() {
     }
 
     fun onFragmentVisibleChange(isVisible: Boolean) {
-        if (isVisible&&needProcess) {
+        if (isVisible && needProcess && hasCreateView) {
             needProcess = false
             onProcessLogic()
         }
@@ -60,7 +58,7 @@ abstract class BaseFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initData()
         bindListener()
-        if (!hasCreateView && userVisibleHint) {
+        if (hasCreateView && (isFragmentVisible||userVisibleHint)) {
             onFragmentVisibleChange(true)
             isFragmentVisible = true
         }
@@ -76,7 +74,9 @@ abstract class BaseFragment : Fragment() {
     /**
      * 初始化数
      */
-    protected abstract fun initData()
+    protected open fun initData() {
+
+    }
 
     /**
      * 为控件设置监
@@ -92,6 +92,7 @@ abstract class BaseFragment : Fragment() {
 
     }
 
+    protected fun toastMessage(message: String?) = baseActivity.toastMessage(message)
 
     override fun onDestroyView() {
         if (compositeSubscription != null) {
@@ -99,6 +100,7 @@ abstract class BaseFragment : Fragment() {
             compositeSubscription = null
         }
         needProcess = true
+        hasCreateView = false
         super.onDestroyView()
     }
 

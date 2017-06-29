@@ -161,7 +161,7 @@ abstract class LBaseAdapter<T>(var defaultItemLayoutId: Int = 0, val datas: Muta
         return targetAdapter as LEmptyViewWrapper
     }
 
-    fun adapterIsEmpty() = datas.size == 0
+    fun dataIsEmpty() = datas.size == 0
 
     fun addOnItemClickListener(onItemClickListener: (view: View, position: Int, mode: T) -> Unit) {
         this.onItemClickListener = onItemClickListener

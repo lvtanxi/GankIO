@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import com.lv.gankio.R
 import com.lv.gankio.base.BaseActivity
 import com.lv.gankio.util.PublicTools
+import com.lv.gankio.util.share
 import com.vansuita.materialabout.builder.AboutBuilder
-import org.jetbrains.anko.share
 
 class AboutFragment : Fragment() {
 

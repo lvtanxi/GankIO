@@ -62,7 +62,7 @@ class DailyFragment : BaseRecyclerFragment<DetailsData>() {
     override fun obtainBaseAdapter(): LBaseAdapter<DetailsData>? = object : LBaseAdapter<DetailsData>(R.layout.rv_item_daily) {
         override fun onBindItem(itemView: View, position: Int, model: DetailsData) {
             itemView.tv_title_daily.text = model.desc.trim({ it <= ' ' })
-            itemView.tv_date_daily.text = PublicTools.date2String(model.publishedAt.time, "yyyy.MM.dd")
+            itemView.tv_date_daily.text = PublicTools.date2String(model.publishedAt)
             itemView.tv_type_daily.text = model.type
             itemView.tv_type_daily.setText(model.type)
                     .setSlantedBackgroundColor(Constant.sTypeColor[model.type]!!)

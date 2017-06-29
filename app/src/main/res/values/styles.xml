@@ -150,7 +150,6 @@
         <item name="titleTextColor">@android:color/white</item>
         <item name="drawerArrowStyle">@style/AppTheme.DrawerArrowToggle</item>
     </style>
-
     <style name="AppTheme.DrawerArrowToggle" parent="Base.Widget.AppCompat.DrawerArrowToggle">
         <item name="color">@android:color/white</item>
     </style>
@@ -161,6 +160,7 @@
 
     <style name="LaunchAct.Style" parent="BaseAppTheme">
         <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
     <style name="CustomTabLayoutTextAppearance" parent="TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse">
@@ -185,5 +185,10 @@
     <style name="ToolBarTextAppearance">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">#FFFFFF</item>
+    </style>
+    <style name="TextInputLayout">
+        <item name="android:layout_height">?actionBarSize</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginTop">8dp</item>
     </style>
 </resources>

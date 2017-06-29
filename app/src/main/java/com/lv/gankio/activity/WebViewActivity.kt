@@ -14,9 +14,9 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.lv.gankio.R
 import com.lv.gankio.base.BaseActivity
+import com.lv.gankio.util.browse
+import com.lv.gankio.util.share
 import kotlinx.android.synthetic.main.activity_web.*
-import org.jetbrains.anko.browse
-import org.jetbrains.anko.share
 
 /**
  * Date: 2017-06-27

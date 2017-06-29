@@ -1,7 +1,6 @@
 package com.lv.gankio.model
 
 import com.lv.gankio.adapter.decorate.LMultiItem
-import java.util.*
 
 /**
  * Date: 2017-06-24
@@ -11,7 +10,7 @@ import java.util.*
 data class DetailsData(var _id: String,
                        var createdAt: String,
                        var desc: String,
-                       var publishedAt: Date,
+                       var publishedAt: String,
                        var source: String,
                        var type: String,
                        var url: String,

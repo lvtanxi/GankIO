@@ -13,6 +13,7 @@ import com.lv.gankio.base.BaseActivity
 import com.lv.gankio.fragment.AboutFragment
 import com.lv.gankio.fragment.DailyFragment
 import com.lv.gankio.fragment.SortFragment
+import com.lv.gankio.fragment.SubmitFragment
 import com.lv.gankio.model.DateData
 import com.lv.gankio.util.PublicTools
 import com.lv.gankio.util.RxBus
@@ -31,7 +32,7 @@ class GankActivity : BaseActivity() {
 
     override fun initData() {
         bottom_navigation.titleState = AHBottomNavigation.TitleState.ALWAYS_SHOW
-        common_view_pager.adapter = LBaseFragmentAdapter(supportFragmentManager, arrayOf(DailyFragment(), SortFragment(), AboutFragment(), AboutFragment()))
+        common_view_pager.adapter = LBaseFragmentAdapter(supportFragmentManager, arrayOf(DailyFragment(), SortFragment(), SubmitFragment(), AboutFragment()))
         val navigationAdapter = AHBottomNavigationAdapter(this, R.menu.navigation)
         navigationAdapter.setupWithBottomNavigation(bottom_navigation)
         bottom_navigation.defaultBackgroundColor = getColorInt(R.color.colorPrimary)

@@ -2,7 +2,9 @@ package com.lv.gankio.net
 
 import com.lv.gankio.model.DailyData
 import com.lv.gankio.model.DetailsData
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Path
 import rx.Observable
 
@@ -30,6 +32,12 @@ interface ApiInterface {
     fun search(@Path("category") category: String,
                @Path("keyword") keyword: String,
                @Path("pageIndex") pageIndex: Int): Observable<List<DetailsData>>
+
+    /**
+     * 搜索
+     */
+    @POST("add2gank")
+    fun submitGank(@Body params:Map<String,String>): Observable<Void>
 
 
 }

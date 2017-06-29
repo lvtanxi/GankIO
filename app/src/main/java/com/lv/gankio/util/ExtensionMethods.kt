@@ -1,6 +1,9 @@
 package com.lv.gankio.util
 
+import android.content.ActivityNotFoundException
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.support.annotation.ColorRes
 import android.support.annotation.LayoutRes
 import android.support.v4.content.ContextCompat
@@ -40,6 +43,36 @@ fun View.setVisibility(show: Boolean) {
 fun String?.isNull() = this == null || this.isEmpty()
 
 fun Context.getColorInt(@ColorRes color: Int) = ContextCompat.getColor(this, color)
+
+fun Context.share(text: String, subject: String = ""): Boolean {
+    try {
+        val intent = Intent(Intent.ACTION_SEND)
+        intent.type = "text/plain"
+        intent.putExtra(android.content.Intent.EXTRA_SUBJECT, subject)
+        intent.putExtra(android.content.Intent.EXTRA_TEXT, text)
+        startActivity(Intent.createChooser(intent, null))
+        return true
+    } catch (e: ActivityNotFoundException) {
+        e.printStackTrace()
+        return false
+    }
+}
+
+
+fun Context.browse(url: String, newTask: Boolean = false): Boolean {
+    try {
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.data = Uri.parse(url)
+        if (newTask) {
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
+        startActivity(intent)
+        return true
+    } catch (e: ActivityNotFoundException) {
+        e.printStackTrace()
+        return false
+    }
+}
 
 
 fun ImageView.loadImage(url:String?){

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:background="@color/colorPrimary"
+              style="@style/MatchMatch.Vertical">
+
+    <com.bm.library.PhotoView
+        android:id="@+id/photo_view"
+        style="@style/MatchMatch"
+        android:transitionName="photoview"
+        android:scaleType="centerInside"/>
+</LinearLayout>

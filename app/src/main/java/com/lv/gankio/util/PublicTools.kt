@@ -2,8 +2,8 @@ package com.lv.gankio.util
 
 import android.app.Activity
 import android.content.Context
-import android.content.DialogInterface
 import android.graphics.Bitmap
+import android.support.v7.app.AlertDialog
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import com.alibaba.android.arouter.launcher.ARouter
@@ -13,7 +13,6 @@ import com.lv.gankio.util.Constant.ONE_HOUR
 import com.lv.gankio.util.Constant.ONE_MINUTE
 import com.pgyersdk.update.PgyUpdateManager
 import com.pgyersdk.update.UpdateManagerListener
-import org.jetbrains.anko.alert
 import org.json.JSONObject
 import java.io.File
 import java.io.FileNotFoundException
@@ -65,11 +64,10 @@ object PublicTools {
 
      * @param time   time
      * *
-     * @param format format
      * *
      * @return String
      */
-    fun date2String(time: Long, format: String): String = SimpleDateFormat(format, Locale.getDefault()).format(time)
+    fun date2String(time: String): String = time.substring(0,time.indexOf("T"))
 
 
     /**
@@ -141,14 +139,14 @@ object PublicTools {
                         val jsonData: JSONObject = JSONObject(result)
                         if ("0" == jsonData.getString("code")) {
                             val jsonObject = jsonData.getJSONObject("data")
-                            activity.alert("发现新版本：${jsonObject.optString("versionName", "")}\n${jsonObject.optString("releaseNote", "")}") {
-                                positiveButton("下载") {
-                                    startDownloadTask(activity, jsonObject.optString("downloadURL", ""))
-
-                                }
-                                negativeButton("取消", DialogInterface::dismiss)
-
-                            }.show()
+                            AlertDialog.Builder(activity)
+                                    .setTitle("发现新版本：v${jsonObject.optString("versionName", "")}")
+                                    .setMessage(jsonObject.optString("releaseNote", ""))
+                                    .setPositiveButton("确定",{ _,_ ->
+                                        startDownloadTask(activity, jsonObject.optString("downloadURL", ""))
+                                    })
+                                    .setNegativeButton("取消",{ dialogInterface, _ -> dialogInterface.cancel()})
+                                    .show()
                         }else{
                             activity.toastMessage("网络错误！")
                         }
