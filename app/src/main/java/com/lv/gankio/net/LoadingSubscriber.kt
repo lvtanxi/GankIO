@@ -45,7 +45,7 @@ open class LoadingSubscriber<T>(widgetInterface: WidgetInterface, listener: Simp
                 } else {
                     error = e.message
                 }
-                weakReference.get()?.toastMessage(error)
+                weakReference.get()?.toastFailure(error)
             }
         }
         if (showLoadingView)

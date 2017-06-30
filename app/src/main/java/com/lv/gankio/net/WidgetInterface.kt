@@ -11,6 +11,8 @@ interface WidgetInterface {
 
     fun hideLoadingView()
 
-    fun toastMessage(message:String?)
+    fun toastSuccess(message:String?)
+
+    fun toastFailure(message:String?)
 
 }

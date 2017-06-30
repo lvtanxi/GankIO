@@ -92,7 +92,11 @@ abstract class BaseFragment : Fragment() {
 
     }
 
-    protected fun toastMessage(message: String?) = baseActivity.toastMessage(message)
+
+    protected fun toastFailure(message: String?)= baseActivity.toastFailure(message)
+
+    protected fun toastSuccess(message: String?)= baseActivity.toastSuccess(message)
+
 
     override fun onDestroyView() {
         if (compositeSubscription != null) {

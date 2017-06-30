@@ -128,11 +128,11 @@ object PublicTools {
 
     fun update(activity: BaseActivity, showToast: Boolean = false) {
         // 版本检测方式2：带更新回调监听
-        PgyUpdateManager.register(activity, "大阿斯顿",
+        PgyUpdateManager.register(activity, "吕檀溪",
                 object : UpdateManagerListener() {
                     override fun onNoUpdateAvailable() {
                         if (showToast)
-                            activity.toastMessage("已经是最新版本了")
+                            activity.toastSuccess("已经是最新版本了")
                     }
 
                     override fun onUpdateAvailable(result: String) {
@@ -148,7 +148,7 @@ object PublicTools {
                                     .setNegativeButton("取消",{ dialogInterface, _ -> dialogInterface.cancel()})
                                     .show()
                         }else{
-                            activity.toastMessage("网络错误！")
+                            activity.toastFailure("网络错误！")
                         }
                     }
                 })

@@ -103,7 +103,7 @@ class WebViewActivity : BaseActivity() {
             R.id.copyurl -> {
                 val clipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
                 clipboardManager.text = url
-                toastMessage("已复制到剪切板")
+                toastSuccess("已复制到剪切板")
             }
             R.id.refresh ->wv_content.reload()
             else -> { }

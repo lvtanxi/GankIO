@@ -77,9 +77,10 @@ abstract class BaseActivity : AppCompatActivity(), WidgetInterface {
 
     }
 
-    override fun toastMessage(message: String?) {
-        ToastUtils.getInstance(this).toastSuccess(message)
-    }
+    override fun toastFailure(message: String?) = ToastUtils.getInstance(this).toastError(message)
+
+    override fun toastSuccess(message: String?) = ToastUtils.getInstance(this).toastSuccess(message)
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
@@ -88,7 +89,6 @@ abstract class BaseActivity : AppCompatActivity(), WidgetInterface {
         }
         return super.onOptionsItemSelected(item)
     }
-
 
 
     override fun onDestroy() {

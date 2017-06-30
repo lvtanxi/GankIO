@@ -5,10 +5,8 @@ import com.lv.gankio.R
 import com.lv.gankio.base.BaseFragment
 import com.lv.gankio.net.LoadingSubscriber
 import com.lv.gankio.net.RetrofitClient
-import com.lv.gankio.util.AnimUtils
 import com.lv.gankio.util.intoCompositeSubscription
 import com.lv.gankio.util.io_main
-import com.lv.gankio.util.setVisibility
 import kotlinx.android.synthetic.main.fragment_submit.*
 
 /**
@@ -29,8 +27,6 @@ class SubmitFragment : BaseFragment() {
         } else if (sub_content.text.isEmpty()) {
             sub_content.error = "请输入必要的描述信息"
         } else {
-            sub_progress.setVisibility(true)
-            AnimUtils.hideAsCircular(sub_btn)
             val params = ArrayMap<String, String>()
             params.put("url",sub_address.text.toString())
             params.put("desc",sub_content.text.toString())
@@ -42,15 +38,17 @@ class SubmitFragment : BaseFragment() {
     }
 
     fun submitGank(params: Map<String, String>) {
+        sub_btn.isClickable=false
+        sub_btn.startLoadAnim()
         RetrofitClient.getInstance()
                 .apiInterface
                 .submitGank(params)
                 .io_main()
                 .subscribe(LoadingSubscriber<Void>(baseActivity, {
-                    success { toastMessage("添加成功") }
+                    success { toastSuccess("添加成功") }
                     finish {
-                        sub_progress.setVisibility(false)
-                        AnimUtils.showAsCircular(sub_btn)
+                        sub_btn.isClickable=true
+                        sub_btn.reset()
                     }
                 }))
                 .intoCompositeSubscription(compositeSubscription)

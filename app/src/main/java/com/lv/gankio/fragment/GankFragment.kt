@@ -84,7 +84,7 @@ class GankFragment : BaseRecyclerFragment<DetailsData>() {
                 .request(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 .subscribe { granted ->
                     if (!granted) {
-                        toastMessage("请在设置中开启存储权限后再试")
+                        toastFailure("请在设置中开启存储权限后再试")
                         return@subscribe
                     }
                     Glide.with(this).load(url)
@@ -101,7 +101,7 @@ class GankFragment : BaseRecyclerFragment<DetailsData>() {
                                         subscriber.onNext(null)
                                         subscriber.onCompleted()
                                     }.io_main()
-                                            .subscribe { toastMessage("保存成") }
+                                            .subscribe { toastSuccess("保存成") }
                                             .intoCompositeSubscription(compositeSubscription)
                                 }
 
