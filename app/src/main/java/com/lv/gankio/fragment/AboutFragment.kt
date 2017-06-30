@@ -30,7 +30,7 @@ class AboutFragment : Fragment() {
                 .setVersionNameAsAppSubTitle()
                 .addAction(R.mipmap.share,
                         R.string.share_app,
-                         { context.share("https://www.pgyer.com/6DBQ") })
+                         { context.share("https://www.pgyer.com/BStY") })
                 .addAction(R.mipmap.update,
                         R.string.update_app) { PublicTools.update(activity as BaseActivity,true)  }
                 .setWrapScrollView(true)
