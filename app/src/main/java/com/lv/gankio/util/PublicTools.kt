@@ -2,11 +2,15 @@ package com.lv.gankio.util
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
+import android.support.v4.app.ActivityOptionsCompat
+import android.support.v4.util.Pair
 import android.support.v7.app.AlertDialog
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import com.alibaba.android.arouter.launcher.ARouter
+import com.lv.gankio.activity.PhotoViewActivity
 import com.lv.gankio.base.BaseActivity
 import com.lv.gankio.util.Constant.ONE_DAY
 import com.lv.gankio.util.Constant.ONE_HOUR
@@ -125,6 +129,18 @@ object PublicTools {
                 .withString("url", url)
                 .navigation()
     }
+
+    fun startTargetActivity(type:String,url: String,activity: BaseActivity,view: View){
+        if ("福利" != type)
+            start2web(url)
+        else {
+            val intent = Intent(activity, PhotoViewActivity::class.java)
+            intent.putExtra("url",url)
+            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, Pair.create<View, String>(view, "photoview"))
+            activity.startActivity(intent, options.toBundle())
+        }
+    }
+
 
     fun update(activity: BaseActivity, showToast: Boolean = false) {
         // 版本检测方式2：带更新回调监听

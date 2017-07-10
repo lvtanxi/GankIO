@@ -1,17 +1,13 @@
 package com.lv.gankio.fragment
 
-import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.os.Environment
-import android.support.v4.app.ActivityOptionsCompat
-import android.support.v4.util.Pair
 import android.view.View
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.animation.GlideAnimation
 import com.bumptech.glide.request.target.SimpleTarget
 import com.lv.gankio.R
-import com.lv.gankio.activity.PhotoViewActivity
 import com.lv.gankio.adapter.LBaseAdapter
 import com.lv.gankio.adapter.LBaseMultiItemAdapter
 import com.lv.gankio.base.BaseRecyclerFragment
@@ -112,16 +108,7 @@ class GankFragment : BaseRecyclerFragment<DetailsData>() {
 
     override fun bindListener() {
         super.bindListener()
-        baseAdapter?.addOnItemClickListener { view, _, (_, _, _, _, _, type, url) ->
-            if ("福利" != type)
-                PublicTools.start2web(url)
-            else {
-               val intent = Intent(baseActivity, PhotoViewActivity::class.java)
-                intent.putExtra("url",url)
-                val options = ActivityOptionsCompat.makeSceneTransitionAnimation(baseActivity,Pair.create<View, String>(view, "photoview"))
-                startActivity(intent, options.toBundle())
-            }
-        }
+        baseAdapter?.addOnItemClickListener { view, _, (_, _, _, _, _, type, url) ->PublicTools.startTargetActivity(type,url,baseActivity,view)}
     }
 
     companion object {

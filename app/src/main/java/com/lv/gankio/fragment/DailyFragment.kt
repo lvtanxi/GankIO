@@ -89,6 +89,6 @@ class DailyFragment : BaseRecyclerFragment<DetailsData>() {
                     day = it.day
                     onProcessLogic()
                 }.intoCompositeSubscription(compositeSubscription)
-        baseAdapter?.addOnItemClickListener { _, _, (_, _, _, _, _, _, url) -> PublicTools.start2web(url) }
+        baseAdapter?.addOnItemClickListener { view, _, (_, _, _, _, _, type, url) ->PublicTools.startTargetActivity(type,url,baseActivity,view)}
     }
 }
