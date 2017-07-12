@@ -27,6 +27,8 @@ class GankActivity : BaseActivity() {
     private var mainMenu: Menu? = null
     private var currentFragmentIndex = -1
     private var datePickerDialog: DatePickerDialog? = null
+    private var exitTime = 0L
+    private var EXIT_TIME = 2000
 
     override fun loadLayoutId() = R.layout.activity_gank
 
@@ -46,6 +48,7 @@ class GankActivity : BaseActivity() {
         showOrHideMenu(R.id.action_filter, currentFragmentIndex == 1)
         return true
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_datepicker ->
@@ -64,7 +67,7 @@ class GankActivity : BaseActivity() {
             datePickerDialog = DatePickerDialog(this@GankActivity,
                     // 绑定监听器
                     DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
-                        RxBus.post(DateData(year,month,dayOfMonth))
+                        RxBus.post(DateData(year, month, dayOfMonth))
                     }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
                     calendar.get(Calendar.DAY_OF_MONTH))// 设置初始日期
         }
@@ -86,6 +89,15 @@ class GankActivity : BaseActivity() {
 
     private fun showOrHideMenu(menuId: Int, show: Boolean) {
         mainMenu?.findItem(menuId)?.isVisible = show
+    }
+
+    override fun onBackPressed() {
+        if ((System.currentTimeMillis() - exitTime) > EXIT_TIME) {
+            toastFailure("再按一次，将退出程序！")
+            exitTime = System.currentTimeMillis()
+            return
+        }
+        super.onBackPressed()
     }
 
 

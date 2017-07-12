@@ -39,6 +39,7 @@ class RetrofitClient private constructor() {
         fun getInstance() = Hoder.instance
     }
 
+
     private object Hoder {
         val instance = RetrofitClient()
     }

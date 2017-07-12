@@ -28,8 +28,7 @@ class LEmptyViewWrapper(val innerAdapter: RecyclerView.Adapter< RecyclerView.Vie
     override fun onBindViewHolder(holder:  RecyclerView.ViewHolder?, position: Int) {
         if (isEmpty()){
             val empty=emptyViews.get(getItemViewType(position))
-            if(empty is EmptyView)
-                empty.showEmptyView()
+            (empty as? EmptyView)?.showEmptyView()
             return
         }
         innerAdapter.onBindViewHolder(holder, position)
