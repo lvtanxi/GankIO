@@ -16,7 +16,6 @@ android {
         targetSdkVersion 25
         versionCode 4
         versionName "1.3"
-        vectorDrawables.useSupportLibrary = true
     }
 
     signingConfigs {
@@ -56,10 +55,14 @@ android {
         main.java.srcDirs += 'src/main/java'
     }
     packagingOptions {
-        exclude 'META-INF/ASL2.0'
+        exclude 'proguard-project.txt'
+        exclude 'project.properties'
+        exclude 'META-INF/LICENSE.txt'
         exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE.txt'
         exclude 'META-INF/NOTICE'
-        exclude 'META-INF/MANIFEST.MF'
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/DEPENDENCIES'
     }
     lintOptions {
         checkReleaseBuilds false
@@ -86,7 +89,6 @@ dependencies {
     compile 'com.github.jrvansuita:MaterialAbout:0.1.2'
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.android.support:cardview-v7:25.3.1'
-    compile 'com.android.support:support-vector-drawable:25.3.1'
     compile 'com.lcodecorex:tkrefreshlayout:1.0.7'
     compile 'com.aurelhubert:ahbottomnavigation:2.0.6'
     kapt 'com.alibaba:arouter-compiler:1.1.2.1'
